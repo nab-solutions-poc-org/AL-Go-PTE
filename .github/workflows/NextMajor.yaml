@@ -30,7 +30,7 @@ jobs:
       telemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
     steps:
       - name: Dump Workflow Information
-        uses: nab-solutions-poc-org/AL-Go-Actions/DumpWorkflowInfo@main
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/DumpWorkflowInfo@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
         with:
           shell: powershell
 
@@ -41,13 +41,13 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: nab-solutions-poc-org/AL-Go-Actions/WorkflowInitialize@main
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowInitialize@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
         with:
           shell: powershell
 
       - name: Read settings
         id: ReadSettings
-        uses: nab-solutions-poc-org/AL-Go-Actions/ReadSettings@main
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
         with:
           shell: powershell
           get: useGitSubmodules,shortLivedArtifactsRetentionDays
@@ -55,7 +55,7 @@ jobs:
       - name: Read submodules token
         id: ReadSubmodulesToken
         if: env.useGitSubmodules != 'false' && env.useGitSubmodules != ''
-        uses: nab-solutions-poc-org/AL-Go-Actions/ReadSecrets@main
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSecrets@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
         with:
           shell: powershell
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -77,7 +77,7 @@ jobs:
 
       - name: Determine Projects To Build
         id: determineProjectsToBuild
-        uses: nab-solutions-poc-org/AL-Go-Actions/DetermineProjectsToBuild@main
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/DetermineProjectsToBuild@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
         with:
           shell: powershell
           maxBuildDepth: ${{ env.workflowDepth }}
@@ -113,7 +113,7 @@ jobs:
 
       - name: Finalize the workflow
         id: PostProcess
-        uses: nab-solutions-poc-org/AL-Go-Actions/WorkflowPostProcess@main
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowPostProcess@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
