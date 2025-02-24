@@ -61,14 +61,14 @@ jobs:
           lfs: true
 
       - name: Read settings
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: ${{ inputs.shell }}
           project: ${{ inputs.project }}
           get: type,powerPlatformSolutionFolder,appRevision,appBuild
 
       - name: Build
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/BuildPowerPlatform@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/BuildPowerPlatform@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: ${{ inputs.shell }}
           solutionFolder: ${{ inputs.project }}
@@ -79,7 +79,7 @@ jobs:
 
       - name: Calculate Artifact names
         id: calculateArtifactsNames
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/CalculateArtifactNames@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/CalculateArtifactNames@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         if: success() || failure()
         with:
           shell: ${{ inputs.shell }}

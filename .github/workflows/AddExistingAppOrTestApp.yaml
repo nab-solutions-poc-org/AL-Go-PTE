@@ -41,7 +41,7 @@ jobs:
     runs-on: [ windows-latest ]
     steps:
       - name: Dump Workflow Information
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/DumpWorkflowInfo@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/DumpWorkflowInfo@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: powershell
 
@@ -50,18 +50,18 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowInitialize@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowInitialize@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: powershell
 
       - name: Read settings
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: powershell
 
       - name: Read secrets
         id: ReadSecrets
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSecrets@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSecrets@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: powershell
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -69,7 +69,7 @@ jobs:
           useGhTokenWorkflowForPush: '${{ github.event.inputs.useGhTokenWorkflow }}'
 
       - name: Add existing app
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/AddExistingApp@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/AddExistingApp@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         with:
           shell: powershell
           token: ${{ steps.ReadSecrets.outputs.TokenForPush }}
@@ -79,7 +79,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowPostProcess@7c4fec6c2547eee4eb1db58a1d52076dcda88ce2
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowPostProcess@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
