@@ -30,7 +30,7 @@ jobs:
           lfs: true
 
       - name: Troubleshooting
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/Troubleshooting@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/Troubleshooting@fe76d5f8ea335c7c49f0daec626a388945272991
         with:
           shell: powershell
           gitHubSecrets: ${{ toJson(secrets) }}

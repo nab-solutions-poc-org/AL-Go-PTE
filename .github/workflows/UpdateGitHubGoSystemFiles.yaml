@@ -36,7 +36,7 @@ jobs:
     runs-on: [ windows-latest ]
     steps:
       - name: Dump Workflow Information
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/DumpWorkflowInfo@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/DumpWorkflowInfo@fe76d5f8ea335c7c49f0daec626a388945272991
         with:
           shell: powershell
 
@@ -45,19 +45,19 @@ jobs:
 
       - name: Initialize the workflow
         id: init
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowInitialize@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowInitialize@fe76d5f8ea335c7c49f0daec626a388945272991
         with:
           shell: powershell
 
       - name: Read settings
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSettings@fe76d5f8ea335c7c49f0daec626a388945272991
         with:
           shell: powershell
           get: templateUrl
 
       - name: Read secrets
         id: ReadSecrets
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSecrets@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/ReadSecrets@fe76d5f8ea335c7c49f0daec626a388945272991
         with:
           shell: powershell
           gitHubSecrets: ${{ toJson(secrets) }}
@@ -93,7 +93,7 @@ jobs:
           Add-Content -Encoding UTF8 -Path $env:GITHUB_ENV -Value "downloadLatest=$downloadLatest"
 
       - name: Update AL-Go system files
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/CheckForUpdates@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/CheckForUpdates@fe76d5f8ea335c7c49f0daec626a388945272991
         with:
           shell: powershell
           token: ${{ fromJson(steps.ReadSecrets.outputs.Secrets).ghTokenWorkflow }}
@@ -104,7 +104,7 @@ jobs:
 
       - name: Finalize the workflow
         if: always()
-        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowPostProcess@6deb42e18649d97d06fd3f08d20d9c8497e9f4ce
+        uses: nab-solutions-poc-org/AL-Go-for-NAB/Actions/WorkflowPostProcess@fe76d5f8ea335c7c49f0daec626a388945272991
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
