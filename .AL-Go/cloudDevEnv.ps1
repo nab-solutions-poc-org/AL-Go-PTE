@@ -42,9 +42,9 @@ Write-Host -ForegroundColor Yellow @'
 
 $tmpFolder = Join-Path ([System.IO.Path]::GetTempPath()) "$([Guid]::NewGuid().ToString())"
 New-Item -Path $tmpFolder -ItemType Directory -Force | Out-Null
-$GitHubHelperPath = DownloadHelperFile -url 'https://raw.githubusercontent.com/nab-solutions-poc-org/AL-Go-for-NAB/fe76d5f8ea335c7c49f0daec626a388945272991/Actions/Github-Helper.psm1' -folder $tmpFolder
-$ALGoHelperPath = DownloadHelperFile -url 'https://raw.githubusercontent.com/nab-solutions-poc-org/AL-Go-for-NAB/fe76d5f8ea335c7c49f0daec626a388945272991/Actions/AL-Go-Helper.ps1' -folder $tmpFolder
-DownloadHelperFile -url 'https://raw.githubusercontent.com/nab-solutions-poc-org/AL-Go-for-NAB/fe76d5f8ea335c7c49f0daec626a388945272991/Actions/Packages.json' -folder $tmpFolder | Out-Null
+$GitHubHelperPath = DownloadHelperFile -url 'https://raw.githubusercontent.com/nab-solutions-poc-org/AL-Go-for-NAB/58763ff99eca5cef6f05676336437b751a657f94/Actions/Github-Helper.psm1' -folder $tmpFolder
+$ALGoHelperPath = DownloadHelperFile -url 'https://raw.githubusercontent.com/nab-solutions-poc-org/AL-Go-for-NAB/58763ff99eca5cef6f05676336437b751a657f94/Actions/AL-Go-Helper.ps1' -folder $tmpFolder
+DownloadHelperFile -url 'https://raw.githubusercontent.com/nab-solutions-poc-org/AL-Go-for-NAB/58763ff99eca5cef6f05676336437b751a657f94/Actions/Packages.json' -folder $tmpFolder | Out-Null
 
 Import-Module $GitHubHelperPath
 . $ALGoHelperPath -local
